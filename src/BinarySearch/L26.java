@@ -2,10 +2,12 @@ package BinarySearch;
 
 public class L26 {
   public static void main(String[] args) {
-
+    int[] a = {1, 1, 1, 2};
+    removeDuplicates(a);
+    System.out.println(a.length);
   }
 
-  public int removeDuplicates(int[] nums) {
+  public static int removeDuplicates(int[] nums) {
     if (nums.length == 0 || nums.length == 1) {
       return nums.length;
     }
@@ -16,7 +18,7 @@ public class L26 {
         nums[++prev] = nums[i];
       }
     }
-    return prev+1;
+    return prev + 1;
 
   }
 }
