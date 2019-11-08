@@ -1,15 +1,5 @@
 package BinaryTree;
 
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode(int x) {
-    val = x;
-  }
-}
-
 public class L104 {
   public int maxDepth(TreeNode root) {
     if (root == null) return 0;
