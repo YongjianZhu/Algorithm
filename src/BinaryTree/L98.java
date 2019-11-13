@@ -9,14 +9,21 @@ public class L98 {
   }
 
   public boolean isValidBST(TreeNode root) {
+    if (root == null) return true;
+    ArrayList<Integer> inorderList = new ArrayList<Integer>();
+    inorder(root, inorderList);
+    for (int i = 0; i < inorderList.size()-1; i++) {
+      if (inorderList.get(i) >= inorderList.get(i+1))
+        return false;
+    }
 
-    return false;
+    return true;
   }
 
-  public void inOrderTraverse(TreeNode root, ArrayList result) {
+  public void inorder(TreeNode root, ArrayList<Integer> result) {
     if (root == null) return;
-    inOrderTraverse(root.left, result);
+    inorder(root.left, result);
     result.add(root.val);
-    inOrderTraverse(root.right, result);
+    inorder(root.right, result);
   }
 }
