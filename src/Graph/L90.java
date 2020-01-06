@@ -15,10 +15,11 @@ public class L90 {
 
   public void dfs(List<List<Integer>> result,
                   List<Integer> subset, List<Integer> nums, int position) {
-    if (!result.contains(subset)){
+
       result.add(new ArrayList<>(subset));
-    }
+
     for (int i = position; i < nums.size(); i++) {
+      if (i != position && nums.get(i) == nums.get(i-1)) continue;
       subset.add(nums.get(i));
       dfs(result, subset, nums, i + 1);
       subset.remove(subset.size() - 1);
