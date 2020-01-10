@@ -2,25 +2,30 @@ package LinkedList;
 
 public class L92 {
   public ListNode reverseBetween(ListNode head, int m, int n) {
-    if (m > n || head == null) return null;
+    if (head == null || m > n) return null;
 
-    ListNode point = new ListNode(-1);
-    point.next = head;
-    ListNode flag = point;
+    ListNode dummy = new ListNode(-1);
+    dummy.next = head;
+    ListNode current = dummy;
 
-    for (int i = 1; i < m; i++) {
-      point = point.next;
+    for (int i = 0; i < m - 1; i++) {
+      current = current.next;
     }
 
-    ListNode prev = point;
-    ListNode mNode = point.next;
+    ListNode prev = current;
+    ListNode mNode = current.next;
+    ListNode node = current.next;
 
-    for (int i = 0; i < m-n; i++) {
-      ListNode temp = mNode.next;
-      mNode.next = prev;
-
+    for (int i = m; i <= n; i ++) {
+      ListNode next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
     }
 
-    return null;
+    current.next = prev;
+    mNode.next = node;
+
+    return dummy.next;
   }
 }
